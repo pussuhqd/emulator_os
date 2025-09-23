@@ -1,7 +1,7 @@
 import shlex
 import argparse
 
-# scripts/test_2_2.bat
+#   scripts/test_2_2.bat
 
 def prs_cmd(line):
     try:
