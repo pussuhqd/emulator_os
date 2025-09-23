@@ -1,0 +1,33 @@
+{
+  "filesystem": {
+    "home": {
+      "user": {
+        "documents": {
+          "report.txt": "Содержимое отчёта",
+          "notes.txt": "Личные заметки"
+        },
+        "pictures": {
+          "photo.jpg": "Данные изображения",
+          "screenshot.png": "Скриншот экрана"
+        },
+        "readme.md": "# Домашняя папка пользователя\nЗдесь хранятся личные файлы"
+      }
+    },
+    "tmp": {
+      "temp_file.log": "Временный лог файл",
+      "cache": {
+        "data.tmp": "Кэш данные"
+      }
+    },
+    "etc": {
+      "config.ini": "[settings]\ndebug=true\nport=8080",
+      "hosts": "127.0.0.1 localhost\n::1 localhost"
+    },
+    "var": {
+      "log": {
+        "system.log": "2024-01-01 12:00:00 INFO Система запущена\n2024-01-01 12:05:00 ERROR Ошибка подключения",
+        "app.log": "2024-01-01 12:00:00 DEBUG Приложение стартовало"
+      }
+    }
+  }
+}
