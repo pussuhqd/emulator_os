@@ -1,0 +1,7 @@
+ls "/home/user"
+cd /tmp
+ls -l
+unknown_command_should_be_skipped
+cd "/home/user/documents"
+ls
+exit

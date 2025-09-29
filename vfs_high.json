@@ -1,0 +1,27 @@
+{
+  "motd": "Сложная VFS",
+  "level1": {
+    "level2": {
+      "level3": {
+        "deep_file.txt": {
+          "type": "file",
+          "data": "RGVlcCBmaWxlIGNvbnRlbnQ="
+        }
+      }
+    }
+  },
+  "home": {
+    "user": {
+      "documents": {
+        "work": {
+          "project": {
+            "code.py": {
+              "type": "file",
+              "data": "cHJpbnQoImhlbGxvIik="
+            }
+          }
+        }
+      }
+    }
+  }
+}

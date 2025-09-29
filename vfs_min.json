@@ -1,0 +1,7 @@
+{
+  "motd": "Минимальная VFS",
+  "file.txt": {
+    "type": "file",
+    "data": "SGVsbG8gVlRT"
+  }
+}

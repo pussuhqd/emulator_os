@@ -1,7 +1,8 @@
 import shlex
 import argparse
+import VFS
 
-#   scripts/test_2_2.bat
+#   scripts/test_3_3.bat
 
 def prs_cmd(line):
     try:
@@ -14,7 +15,7 @@ def execute_cmd(cmd, args):
     if cmd == "exit":
         return True   # exit
     elif cmd in ["ls", "cd"]:
-        print(f"[Заглушка] {cmd}: {args}")
+        print(cmd,*args)
     else:
         print(f"Неизвестная команда: {cmd}")
     return False
@@ -36,7 +37,7 @@ def run_mode(vfs_name):
                 break
 
         except KeyboardInterrupt:
-            print("\nПолучен сигнал завершения (Ctrl+C). Завершаем...")
+            print("\nЗавершаем...")
             break
 
 
@@ -45,7 +46,7 @@ def run_script(script_path, vfs_name):
         with open(script_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
     except FileNotFoundError:
-        print(f"Ошибка: файл '{script_path}' не найден")
+        print(f"Файл '{script_path}' не найден")
         return
     except Exception as e:
         print(f"Ошибка чтения: {e}")
@@ -71,17 +72,22 @@ def run_script(script_path, vfs_name):
 def main():
     vfs_name = "my_vfs"
 
-    parser = argparse.ArgumentParser(description="Эмулятор unix-os")
+    parser = argparse.ArgumentParser(description="эмулятор unix-os")
     parser.add_argument("--vfs-path", required=True, help="Путь к VFS")
     parser.add_argument("--script", help="Путь к стартовому скрипту")
 
     args = parser.parse_args()
 
-    # реализация отладочного вывода
-    print("[DEBUG] Запуск с параметрами:")
     print(f"\tVFS: {args.vfs_path}")
-    print(f"\tСкрипт: {args.script}")
+    print(f"\tСкрипт: {args.script}\n")
 
+
+    vfs = VFS.VirtualFileSystem(args.vfs_path)
+
+    if args.script:
+        run_script(args.script, vfs)
+    else:
+        run_mode(vfs)
 
     if args.script:
         run_script(args.script, vfs_name)

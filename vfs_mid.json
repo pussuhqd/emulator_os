@@ -1,0 +1,23 @@
+{
+  "motd": "Средняя VFS",
+  "filesystem": {
+    "home": {
+      "documents": {
+        "report.txt": {
+          "type": "file",
+          "data": "0J7RgtGH0LXRgg=="
+        },
+        "notes.txt": {
+          "type": "file",
+          "data": "0JfQsNC80LXRgtC60Lg="
+        }
+      },
+      "pictures": {
+        "photo.jpg": {
+          "type": "file",
+          "data": "0JrQsNGA0YLQuNC90LrQuA=="
+        }
+      }
+    }
+  }
+}
