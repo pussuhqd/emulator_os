@@ -1,0 +1,21 @@
+tree
+
+cd filesystem
+
+cd home
+
+ls
+
+cd documents
+ls
+cat notes.txt
+cat report.txt
+
+cd ..
+cd pictures
+cat photo.jpg
+
+cd invalid_dir
+cat invalid.txt
+
+exit

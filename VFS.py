@@ -45,6 +45,8 @@ class VirtualFileSystem:
 
         items = []
         for name, content in node.items():
+            if name == 'motd':
+                continue
             if isinstance(content, dict) and content.get('type') == 'file':
                 items.append(name)
             else:
@@ -96,4 +98,34 @@ class VirtualFileSystem:
         return None
 
     def get_current_path(self):
-        return self.current_dir
+        return self.current_dir.rstrip('/')
+
+    def show_tree(self, path=""):
+        if path == "":
+            path = self.current_dir
+
+        node = self._get_node(path)
+        if node is None or not isinstance(node, dict):
+            print(f"tree: '{path}': Нет такого файла или каталога")
+            return
+
+        print(path if path != "/" else "/")
+        self._show_tree_recursive(node, "", path)
+
+    def _show_tree_recursive(self, node, prefix, current_path):
+        if not isinstance(node, dict):
+            return
+
+        items = sorted(node.items())
+
+        for i, (name, content) in enumerate(items):
+            is_last = i == len(items) - 1
+            connector = "└── " if is_last else "├── "
+
+            if isinstance(content, dict) and content.get('type') == 'file':
+                print(f"{prefix}{connector}{name}")
+            else:
+                print(f"{prefix}{connector}{name}/")
+                if isinstance(content, dict) and content.get('type') != 'file':
+                    next_prefix = prefix + ("    " if is_last else "│   ")
+                    self._show_tree_recursive(content, next_prefix, f"{current_path}/{name}")
