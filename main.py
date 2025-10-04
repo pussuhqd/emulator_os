@@ -57,7 +57,7 @@ def run_mode(vfs):
     print(f"Введите 'exit' для выхода.")
     while True:
         try:
-            current_path = vfs.get_current_path()  # ✅ Получаем текущий путь из VFS
+            current_path = vfs.get_current_path()
             line = input(f"{current_path}$ ").strip()
             if not line:
                 continue
@@ -76,6 +76,7 @@ def run_mode(vfs):
 
 
 def run_script(script_path,vfs):
+    vfs_name = "my_vfs"
     try:
         with open(script_path, 'r', encoding='utf-8') as f:
             lines = f.readlines()
@@ -94,7 +95,7 @@ def run_script(script_path,vfs):
             continue
 
         current_path = vfs.get_current_path()
-        print(f"{current_path}$ {line}")
+        print(f"{current_path}/{vfs_name}$ {line}")
 
         parsed = prs_cmd(line)
         if not parsed:
