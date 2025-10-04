@@ -2,7 +2,7 @@ import shlex
 import argparse
 import VFS
 
-#   scripts/test_4.bat
+#   scripts/test_5.bat
 vfs_name = "my_vfs"
 def prs_cmd(line):
     try:
@@ -12,6 +12,7 @@ def prs_cmd(line):
         return []
 
 def execute_cmd(cmd, args,vfs):
+    cmd = cmd.lower()
     if cmd == "exit":
         return True
     elif cmd == "ls":
@@ -45,9 +46,33 @@ def execute_cmd(cmd, args,vfs):
             print(content)
         else:
             print(f"cat: {path}: Нет такого файла")
-
     elif cmd == "tree":
         vfs.show_tree()
+
+    elif cmd == "rm":
+        if not args:
+            print("rm: отсутствует аргумент")
+            return False
+
+        recursive = "-r" in args
+        if recursive:
+            args = [arg for arg in args if arg != "-r"]
+
+        if not args:
+            print("rm: отсутствует путь")
+            return False
+
+        path = args[0]
+        if not vfs.remove_item(path, recursive):
+            print(f"rm: невозможно удалить '{path}'")
+
+    elif cmd == "cp":
+        if len(args) != 2:
+            print("cp: требуется 2 аргумента: cp <source> <destination>")
+            return False
+        source, dest = args[0], args[1]
+        if not vfs.copy_file(source, dest):
+            print(f"cp: невозможно скопировать '{source}' в '{dest}'")
     else:
         print(f"Неизвестная команда: {cmd}")
     return False
