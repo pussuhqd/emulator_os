@@ -1,0 +1,43 @@
+tree
+cd filesystem
+ls
+cd home
+ls
+cd documents
+ls
+
+cat report.txt
+cat notes.txt
+
+cd /
+tree
+
+cd filesystem/home/documents
+cp report.txt report_backup.txt
+ls
+cat report_backup.txt
+tree
+
+
+cp nonexistent.txt test.txt
+
+cd ..
+ls
+rm pictures/photo_copy.txt
+tree
+
+rm nonexistent.txt
+
+cd ..
+ls
+rm -r pictures
+ls
+tree
+
+rm documents
+
+cd /nonexistent
+cat nonexistent.txt
+ls /nonexistent
+
+exit
