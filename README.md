@@ -43,4 +43,24 @@ git clone https://github.com/pussuhqd/emulator_os
 
 py main.py --vfs-path [путь_к_vfsх.json] [--script путь_к_скрипту.txt]
 
+**Запуск определенного этапа**
+
+git clone https://github.com/pussuhqd/emulator_os
+cd emulator_os
+
+stage 1
+git checkout 6cefaf61b07d69f8daa2f6aefd04573126ba40dc
+
+stage 2
+git checkout 9726a078f0101db8512e922e02befac59c3acb33
+
+stage 3
+git checkout b6880e281a01939e7785285b14ebe03143204ff0
+
+stage 4
+git checkout cf1daf5941362ec5239db9543f8ac1b4d6f4d58c
+
+stage 5
+git checkout 8ab53514513b19066469e2953f06c77abe1414ae
+
 параметр script является опциональным
